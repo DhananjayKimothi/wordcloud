@@ -73,7 +73,7 @@ def gen_wordcloud(data):
             fig, ax = plt.subplots()
             im = ax.imshow(wordcloud)
             st.pyplot(fig)
-            heading3 = '<p style="font-family:Courier; color:Blue; font-size: 20px;">It is simple to download it -- just write click :blush:</p>'
+            heading3 = '<p style="font-family:Courier; color:Blue; font-size: 20px;">Right click and Download</p>'
             st.markdown(heading3, unsafe_allow_html=True)
         else:
             heading4 = '<p style="font-family:Courier; color:Red; font-size: 20px;">Sorry!!! OCR unable to extract the text from uploaded pdf, please try another file</p>'
