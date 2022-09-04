@@ -4,11 +4,18 @@ import io
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 
-
-
 stopwords = set(STOPWORDS)
 
-st.write("Word Cloud") 
+original_title = '<p style="font-family:Courier; color:Red; font-size: 40px;">Word Cloud Generator</p>'
+st.markdown(original_title, unsafe_allow_html=True)
+st.markdown('generate word cloud form a pdf document')
+
+
+heading2 = '<p style="font-family:Courier; color:Blue; font-size: 20px;">What is a word cloud generator ?</p>'
+st.markdown(heading2, unsafe_allow_html=True)
+
+st.markdown("A word cloud is a collection, or cluster, of words depicted in different sizes. \
+The bigger and bolder the word appears, the more often it's mentioned within a given text and the more important it is.")
 
 def extract_data(pdfFileObj):
         # creating a pdf file object 
@@ -43,7 +50,9 @@ uploaded_file = st.file_uploader("Upload a pdf file", "pdf")
 
 def gen_wordcloud(data):
     comment_words = ''
-    for text in data:
+    text = ' '.join(data)
+    # data_ = ' '.join(data)
+    if  text:
         tokens = text.split()
         # Converts each token into lowercase
         for i in range(len(tokens)):
@@ -53,7 +62,7 @@ def gen_wordcloud(data):
                     background_color ='white',
                     stopwords = stopwords,
                     min_font_size = 10).generate(comment_words)
-        break
+        
     # print(comment_words)
 
     # plot the WordCloud image
