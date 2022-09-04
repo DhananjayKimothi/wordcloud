@@ -4,6 +4,11 @@ import io
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 
+### What to expect 
+
+
+
+
 stopwords = set(STOPWORDS)
 
 original_title = '<p style="font-family:Courier; color:Red; font-size: 40px;">Word Cloud Generator</p>'
@@ -57,18 +62,20 @@ def gen_wordcloud(data):
         # Converts each token into lowercase
         for i in range(len(tokens)):
             tokens[i] = tokens[i].lower()
-        comment_words += " ".join(tokens)+" "
-        wordcloud = WordCloud(width = 800, height = 800,
-                    background_color ='white',
-                    stopwords = stopwords,
-                    min_font_size = 10).generate(comment_words)
-        
-    # print(comment_words)
-
-    # plot the WordCloud image
-    fig, ax = plt.subplots()
-    im = ax.imshow(wordcloud)
-    st.pyplot(fig)
+        if tokens:
+            comment_words += " ".join(tokens)+" "
+            wordcloud = WordCloud(width = 800, height = 800,
+                        background_color ='white',
+                        stopwords = stopwords,
+                        min_font_size = 10).generate(comment_words)
+            
+  
+            fig, ax = plt.subplots()
+            im = ax.imshow(wordcloud)
+            st.pyplot(fig)
+        else:
+            heading3 = '<p style="font-family:Courier; color:Red; font-size: 20px;">Sorry!!! OCR unable to extract the text from uploaded pdf, please try another file</p>'
+            st.markdown(heading3, unsafe_allow_html=True)
 
 
 
@@ -78,7 +85,4 @@ if uploaded_file is not None:
     file = io.BytesIO(file)
     data = extract_data(file)
     gen_wordcloud(data)
-
- 
-
 
