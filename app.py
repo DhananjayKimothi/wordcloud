@@ -16,7 +16,7 @@ st.markdown(original_title, unsafe_allow_html=True)
 st.markdown('generate word cloud form a pdf document')
 
 
-heading2 = '<p style="font-family:Courier; color:Blue; font-size: 20px;">What is a word cloud generator ?</p>'
+heading2 = '<p style="font-family:Courier; color:Blue; font-size: 20px;">What is a word cloud?</p>'
 st.markdown(heading2, unsafe_allow_html=True)
 
 st.markdown("A word cloud is a collection, or cluster, of words depicted in different sizes. \
